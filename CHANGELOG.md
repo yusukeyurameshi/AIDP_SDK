@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on Keep a Changelog, and this project adheres to semantic
 versioning after the first public release.
 
+## [0.1.1] - 2026-05-28
+
+### Changed
+
+- Documented PyPI and TestPyPI installation commands.
+- Added a clear vibe-code notice to the README.
+
 ## [0.1.0] - 2026-05-28
 
 ### Added

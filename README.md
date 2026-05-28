@@ -12,10 +12,36 @@ endpoints while still exposing `raw_request()` for new API operations.
 This package does not include credentials, OCIDs, tokens, private keys or sample
 data tied to a real tenancy.
 
+## Vibe-code notice
+
+This package is being generated with vibe code. Treat the SDK as an early,
+human-reviewed implementation scaffold: inspect the generated code, validate the
+mapped REST operations against the official Oracle documentation, and test it in
+your own OCI tenancy before using it in production workflows.
+
 ## Installation
+
+Install from PyPI after the package is published to the production PyPI index:
 
 ```bash
 python -m pip install ffs-aidp-sdk
+```
+
+Install a specific release:
+
+```bash
+python -m pip install "ffs-aidp-sdk==0.1.1"
+```
+
+The package is currently published to TestPyPI for validation. TestPyPI does not
+mirror all runtime dependencies reliably, so point pip at PyPI for dependencies
+when installing from TestPyPI:
+
+```bash
+python -m pip install \
+  --index-url https://test.pypi.org/simple/ \
+  --extra-index-url https://pypi.org/simple/ \
+  ffs-aidp-sdk
 ```
 
 For local development:
@@ -24,8 +50,9 @@ For local development:
 python -m pip install -e ".[dev]"
 ```
 
-Do not publish this package without explicit confirmation. Before any future
-publish, confirm again that `ffs-aidp-sdk` is still available on PyPI.
+Do not publish this package to the production PyPI index without explicit
+confirmation. Before any future production publish, confirm again that
+`ffs-aidp-sdk` is still available on PyPI.
 
 ## HTTP stack choice
 
