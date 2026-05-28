@@ -38,7 +38,7 @@ def create_config_file_signer(
     """Create a signer from an OCI config file profile."""
 
     oci = _import_oci()
-    config = oci.config.from_file(file_location=config_file, profile_name=profile)
+    config = _load_config_from_file(oci, config_file=config_file, profile=profile)
     oci.config.validate_config(config)
 
     signer_kwargs: dict[str, Any] = {
@@ -64,7 +64,7 @@ def create_session_token_signer(
     """Create a signer for OCI CLI session-token authentication."""
 
     oci = _import_oci()
-    config = oci.config.from_file(file_location=config_file, profile_name=profile)
+    config = _load_config_from_file(oci, config_file=config_file, profile=profile)
     token_file = security_token_file or config.get("security_token_file")
     key_file = config.get("key_file")
 
@@ -93,3 +93,15 @@ def create_instance_principal_signer() -> Signer:
 
     oci = _import_oci()
     return cast(Signer, oci.auth.signers.InstancePrincipalsSecurityTokenSigner())
+
+
+def _load_config_from_file(
+    oci: Any,
+    *,
+    config_file: str | None,
+    profile: str,
+) -> dict[str, Any]:
+    kwargs = {"profile_name": profile}
+    if config_file is not None:
+        kwargs["file_location"] = config_file
+    return cast(dict[str, Any], oci.config.from_file(**kwargs))

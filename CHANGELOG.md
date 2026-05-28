@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on Keep a Changelog, and this project adheres to semantic
 versioning after the first public release.
 
+## [0.1.2] - 2026-05-28
+
+### Fixed
+
+- Fixed OCI config-file authentication when `config_file` is omitted, allowing
+  the OCI SDK to use its default config path.
+
+### Changed
+
+- Updated TestPyPI installation instructions to install dependencies from PyPI
+  first and install `ffs-aidp-sdk` from TestPyPI with `--no-deps`.
+
 ## [0.1.1] - 2026-05-28
 
 ### Changed

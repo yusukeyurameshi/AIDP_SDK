@@ -30,18 +30,17 @@ python -m pip install ffs-aidp-sdk
 Install a specific release:
 
 ```bash
-python -m pip install "ffs-aidp-sdk==0.1.1"
+python -m pip install "ffs-aidp-sdk==0.1.2"
 ```
 
-The package is currently published to TestPyPI for validation. TestPyPI does not
-mirror all runtime dependencies reliably, so point pip at PyPI for dependencies
-when installing from TestPyPI:
+The package is currently published to TestPyPI for validation. TestPyPI can
+contain incomplete or incompatible copies of dependency projects, so install
+runtime dependencies from PyPI first and then install this package from TestPyPI
+with `--no-deps`:
 
 ```bash
-python -m pip install \
-  --index-url https://test.pypi.org/simple/ \
-  --extra-index-url https://pypi.org/simple/ \
-  ffs-aidp-sdk
+python -m pip install "oci>=2.130.0" "requests>=2.31.0"
+python -m pip install --index-url https://test.pypi.org/simple/ --no-deps "ffs-aidp-sdk==0.1.2"
 ```
 
 For local development:
